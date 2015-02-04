@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ariketa2ImplOnClickListener</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="reset">R</string>
+    <string name="batu">+</string>
+    <string name="kendu">-</string>
+    <string name="number">0</string>
+
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ariketa9AgendaIntent</string>
+    <string name="nuevo">New</string>
+    <string name="editar">Edit</string>
+    <string name="borrar">Delete</string>
+    <string name="guardar">Save</string>
+    <string name="cancelar">Cancel</string>
+    <string name="aceptar">Accept</string>
+    <string name="volver">Return</string>
+    <string name="buscar">Search</string>
+    <string name="tvNombre">Nombre</string>
+    <string name="tvApellido">Apellido</string>
+    <string name="tvTel">Telefono</string>
+    <string name="tvObs">Observaciones</string>
+    <string name="etStartNombre">Nombre</string>
+    <string name="etStartApellido">Apellido</string>
+    <string name="etStartTel">Telefono</string>
+    <string name="etStartObs">Observaciones</string>
+    <string name="etStartPueblo">Pueblo</string>
+    <string name="etNombre">Inserte su nombre</string>
+    <string name="etApellido">Inserte su apellido</string>
+    <string name="etTel">Inserte su telefono</string>
+    <string name="etObs">Inserte observaciones</string>
+    <string name="title_activity_new">NewActivity</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="tvPueblo">Pueblo</string>
+    
+    <string-array name="pueblo_arrays">
+        <item>Oñati</item>
+        <item>Arrasate</item>
+        <item>Gasteiz</item>
+        <item>Bergara</item>
+        <item>Eskoriatza</item>
+        <item>Elgeta</item>
+        <item>Antzuola</item>
+        <item>Aramaixo</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,120 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    tools:context="${relativePackage}.${activityClass}" >
+
+   	<LinearLayout
+        android:id="@+id/linearFormulario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.34"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/volver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="@string/volver" />
+
+        <LinearLayout 
+            android:id="@+id/linearGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">  
+                    
+	       	<RadioGroup
+	       	    android:id="@+id/radioGroup"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	
+	            <RadioButton
+					android:id="@+id/buscar_nombre"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	            <RadioButton
+					android:id="@+id/buscar_apellido"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	            <RadioButton
+					android:id="@+id/buscar_telefono"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	           <RadioButton
+					android:id="@+id/buscar_observaciones"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+	           <RadioButton
+					android:id="@+id/buscar_pueblos"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"/>
+			</RadioGroup>
+			
+	       	<LinearLayout 
+	            android:id="@+id/linearEdit"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical">
+	            
+	       		<EditText 
+	       		    android:id="@+id/nom"
+                	android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:hint="@string/tvNombre"/> 
+                	
+            	<EditText 
+            	    android:id="@+id/apel"
+                	android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:hint="@string/tvApellido"/> 
+                	
+            	<EditText android:id="@+id/tel"
+                	android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:hint="@string/tvTel"/>
+            	
+            	<EditText android:id="@+id/obs"
+                	android:layout_width="fill_parent"
+                	android:layout_height="wrap_content"
+                	android:hint="@string/tvObs"/> 
+                	
+               	<Spinner 
+	                android:id="@+id/sLista"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"/>
+             </LinearLayout>
+		</LinearLayout>
+
+		<LinearLayout
+		    android:id="@+id/linearBotoiak"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal" >
+           
+	       <Button 
+	           android:id="@+id/aceptar"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/aceptar"/>
+	       
+	       <Button 
+	           android:id="@+id/buscar"
+	           android:layout_width="wrap_content"
+	           android:layout_height="wrap_content"
+	           android:text="@string/buscar"/>
+    	</LinearLayout>
+    </LinearLayout>
+      
+    <LinearLayout
+        android:id="@+id/linerLayoutBotoia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.34"
+        android:orientation="vertical" >
+	</LinearLayout>
+</LinearLayout>

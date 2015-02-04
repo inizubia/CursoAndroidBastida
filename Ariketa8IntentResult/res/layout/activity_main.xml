@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+   <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginLeft="22dp"
+        android:text="@string/login" />
+    
+    <EditText 
+        android:id="@+id/usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/user"/>
+    
+    <EditText 
+        android:id="@+id/pasahitza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usuario"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/password"
+        android:inputType="textPassword"/>
+
+    <Button 
+        android:id="@+id/botoia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pasahitza"
+        android:layout_centerHorizontal="true"
+        android:text="@string/start"/>
+    
+    <TextView
+        android:id="@+id/emaitza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/botoia"
+        android:layout_centerHorizontal="true"
+        android:text="" />
+
+</RelativeLayout>

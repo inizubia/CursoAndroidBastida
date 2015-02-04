@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/button2"
+        android:text="0" />
+    
+    <EditText 
+        android:id="@+id/editText2" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_above="@+id/button2" 
+        android:layout_alignParentRight="true" 
+        android:layout_toRightOf="@+id/button1" />
+
+    <Button 
+        android:id="@+id/button1" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_above="@+id/button2" 
+        android:layout_alignLeft="@+id/button3" 
+        android:text="@string/reset" 
+        android:onClick="reset"/>
+    
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="14dp"
+        android:text="@string/batu" 
+        android:onClick="batu"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:text="@string/kendu" 
+        android:onClick="kendu"/> 
+
+</RelativeLayout>

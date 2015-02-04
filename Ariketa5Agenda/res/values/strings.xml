@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ariketa5Agenda</string>
+    <string name="nuevo">NUEVO</string>
+    <string name="save">GUARDAR</string>
+    <string name="tvNombre">Nombre</string>
+	<string name="etNombre">Inserte su nombre</string>
+	<string name="etApellido">Inserte su apellido</string>
+    <string name="tvApellido">Apellido</string>
+    <string name="etTel">Inserte su telefono</string>
+    <string name="tvTel">Telefono</string>
+    <string name="etObs">Inserte observaciones</string>
+    <string name="tvObs">Observaciones</string>
+    <string name="editar">EDITAR</string>
+    <string name="borrar">B</string>
+	
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ariketa2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="reset">R</string>
+    <string name="batu">+</string>
+    <string name="kendu">-</string>
+
+</resources>
