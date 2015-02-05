@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ariketa13ListViewSQL</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="tvAno">Año</string>
+    <string name="tvMes">Mes</string>
+    <string name="tvDia">Dia</string>
+    <string name="tvAsunto">Asunto</string>
+    <string name="etAsunto">Introducir asunto</string>
+    
+    <string-array name="mes_array">
+        <item>Urtarrila</item>
+        <item>Otsaila</item>
+        <item>Martxoa</item>
+        <item>Apirila</item>
+        <item>Maiatza</item>
+        <item>Ekaina</item>
+        <item>Uztaila</item>
+        <item>Abuztua</item>
+        <item>Iraila</item>
+        <item>Urria</item>
+        <item>Azaroa</item>
+        <item>Abendua</item>
+    </string-array>
+
+</resources>
