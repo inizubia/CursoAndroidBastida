@@ -104,6 +104,7 @@ public class MainActivity extends ListActivity implements OnClickListener{
 			listaArray.add(l);
 		adaptador.notifyDataSetChanged();
 		
+		etAsunto.setText("");
 	}
 	
 	public void cargar(){
