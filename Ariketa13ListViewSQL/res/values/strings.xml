@@ -9,6 +9,7 @@
     <string name="tvDia">Dia</string>
     <string name="tvAsunto">Asunto</string>
     <string name="etAsunto">Introducir asunto</string>
+    <string name="desc">Descripción</string>
     
     <string-array name="mes_array">
         <item>Urtarrila</item>

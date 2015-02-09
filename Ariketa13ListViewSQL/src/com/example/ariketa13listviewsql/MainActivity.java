@@ -1,34 +1,35 @@
 package com.example.ariketa13listviewsql;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-public class MainActivity extends ListActivity implements OnClickListener{
+public class MainActivity extends Activity implements OnClickListener{
 
 	private Button btnAceptar;
 	private EditText etAsunto;
 	private Spinner spDia, spMes, spAno;
-	private List<String> listaArray = new ArrayList<String>();
 	private ArrayList<String> list = new ArrayList<String>();
 	private ArrayList<Integer> arrayDia = new ArrayList<Integer>();
 	private ArrayList<Integer> arrayAno = new ArrayList<Integer>();
-	private ArrayAdapter<String> adaptador = null;
 	private ArrayAdapter<Integer> adaptadorDia, adaptadorAno;
 	private ArrayAdapter<CharSequence> adaptadorMes;
 	private int i;
 	private BBDD bbdd;
+	private ArrayList<Lista_entrada> datos = new ArrayList<Lista_entrada>();
+	private ListView lista = null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends ListActivity implements OnClickListener{
 		spDia = (Spinner)findViewById(R.id.sListaDia);
 		spMes = (Spinner)findViewById(R.id.sListaMes);
 		spAno = (Spinner)findViewById(R.id.sListaAno);
+		lista = (ListView)findViewById(R.id.list);
 		
 		btnAceptar.setOnClickListener(this);
 		
@@ -60,34 +62,22 @@ public class MainActivity extends ListActivity implements OnClickListener{
 		//adaptadorDia.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spAno.setAdapter(adaptadorAno);
 		
-		adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaArray);
-		setListAdapter(adaptador);
+		//adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listaArray);
+		//setListAdapter(adaptador);
 		
 		bbdd = new BBDD(this, "Tareas", null, 1);
 		
-		cargar();
-	}
-
-	@Override
-	protected void onListItemClick(ListView l, View v, final int position, long id) {
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle("Borrar Contacto");  
-		alertDialog.setMessage("¿ Estas seguro de borrar el contacto ?");            
-		alertDialog.setCancelable(false);  
-		alertDialog.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {  
-            public void onClick(DialogInterface dialogo1, int id) {
-            	listaArray.remove(position);
-            	bbdd.deleteTarea(position);
-        		adaptador.notifyDataSetChanged();
-    			}
-        });  
-		alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {  
-            public void onClick(DialogInterface dialogo1, int id) {  
-                //EZER EZ;
-            }  
-        });
-		alertDialog.setIcon(R.drawable.ic_launcher);
-		alertDialog.show();
+		cargar();		
+		adaptador();
+		
+		lista.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> pariente, View view, int posicion, long id)
+			{
+				datos.remove(posicion);
+				((Lista_adaptador)lista.getAdapter()).notifyDataSetChanged();
+				bbdd.deleteTarea(posicion);
+			}
+		});
 	}
 
 	@Override
@@ -98,19 +88,41 @@ public class MainActivity extends ListActivity implements OnClickListener{
 		String asunto = etAsunto.getText().toString();
 		bbdd.saveTarea(d, m, y, asunto);
 		
-		listaArray.clear();
+		datos.clear();
 		list = bbdd.selectPlan();
 		for(String l: list)
-			listaArray.add(l);
-		adaptador.notifyDataSetChanged();
-		
+			datos.add(new Lista_entrada(R.drawable.ic_launcher,l));
+
+		((Lista_adaptador)lista.getAdapter()).notifyDataSetChanged();
 		etAsunto.setText("");
 	}
 	
 	public void cargar(){
 		list = bbdd.selectPlan();
 		for(String l: list)
-			listaArray.add(l);
-		adaptador.notifyDataSetChanged();
+			datos.add(new Lista_entrada(R.drawable.ic_launcher,l));
+	}
+	
+	private void adaptador() {
+		lista.setAdapter(new Lista_adaptador(this, R.layout.entrada, datos)
+		{
+			public void onEntrada(Object entrada, View view)
+			{
+				if (entrada!=null)
+				{
+					TextView fecha = (TextView)view.findViewById(R.id.tvFecha);
+					if (fecha!=null)
+					{
+						fecha.setText(((Lista_entrada)entrada).getFecha());
+					}
+					ImageView imagen = (ImageView)view.findViewById(R.id.imagen);
+					if (imagen!=null)
+					{
+						imagen.setImageResource(((Lista_entrada)entrada).getIdImagen());
+					}
+				}
+			}
+		});
+		
 	}
 }
