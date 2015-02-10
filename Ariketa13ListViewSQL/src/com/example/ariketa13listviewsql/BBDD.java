@@ -27,15 +27,19 @@ public class BBDD extends SQLiteOpenHelper{
 		sqlDB.execSQL("CREATE TABLE Plan (_id INTEGER PRIMARY KEY AUTOINCREMENT, day varchar(30), mounth varchar(30), year varchar(30), issue varchar(30))");	
 	}
 
-	public ArrayList<String> selectPlan() {
+	public ArrayList<String[]> selectPlan() {
 	    sqlDB = getReadableDatabase();
-	    ArrayList<String> lista = new ArrayList<String>();
+	    ArrayList<String[]> lista = new ArrayList<String[]>();
+	    String[] listas = new String[2];
 	    
 	    String[] valores_recuperar = {"_id", "day", "mounth", "year", "issue"};
 	    Cursor c = sqlDB.query("Plan", valores_recuperar, null, null, null, null, null, null);
 	    if (c.moveToFirst()){
 		    do {
-		    	lista.add(c.getString(1)+" "+c.getString(2)+" "+c.getString(3)+" "+c.getString(4));
+		    	listas[0]=(c.getString(1)+"-"+c.getString(2)+"-"+c.getString(3));
+		    	listas[1]=c.getString(4);
+		    	lista.add(listas);
+		    	listas = new String[2];
 		    } while (c.moveToNext());
 	    }
 	    c.close();

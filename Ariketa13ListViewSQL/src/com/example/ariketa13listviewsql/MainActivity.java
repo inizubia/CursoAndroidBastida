@@ -21,7 +21,6 @@ public class MainActivity extends Activity implements OnClickListener{
 	private Button btnAceptar;
 	private EditText etAsunto;
 	private Spinner spDia, spMes, spAno;
-	private ArrayList<String> list = new ArrayList<String>();
 	private ArrayList<Integer> arrayDia = new ArrayList<Integer>();
 	private ArrayList<Integer> arrayAno = new ArrayList<Integer>();
 	private ArrayAdapter<Integer> adaptadorDia, adaptadorAno;
@@ -29,6 +28,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private int i;
 	private BBDD bbdd;
 	private ArrayList<Lista_entrada> datos = new ArrayList<Lista_entrada>();
+	private ArrayList<String[]> list = new ArrayList<String[]>();
 	private ListView lista = null;
 	
 	@Override
@@ -90,8 +90,8 @@ public class MainActivity extends Activity implements OnClickListener{
 		
 		datos.clear();
 		list = bbdd.selectPlan();
-		for(String l: list)
-			datos.add(new Lista_entrada(R.drawable.ic_launcher,l));
+		for(String[] l: list)
+			datos.add(new Lista_entrada(R.drawable.ic_launcher,l[0],l[1]));
 
 		((Lista_adaptador)lista.getAdapter()).notifyDataSetChanged();
 		etAsunto.setText("");
@@ -99,8 +99,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	public void cargar(){
 		list = bbdd.selectPlan();
-		for(String l: list)
-			datos.add(new Lista_entrada(R.drawable.ic_launcher,l));
+		for(String[] l: list)
+			datos.add(new Lista_entrada(R.drawable.ic_launcher,l[0],l[1]));
 	}
 	
 	private void adaptador() {
@@ -114,6 +114,11 @@ public class MainActivity extends Activity implements OnClickListener{
 					if (fecha!=null)
 					{
 						fecha.setText(((Lista_entrada)entrada).getFecha());
+					}
+					TextView asunto = (TextView)view.findViewById(R.id.tvAsunto);
+					if (asunto!=null)
+					{
+						asunto.setText(((Lista_entrada)entrada).getAsunto());
 					}
 					ImageView imagen = (ImageView)view.findViewById(R.id.imagen);
 					if (imagen!=null)
