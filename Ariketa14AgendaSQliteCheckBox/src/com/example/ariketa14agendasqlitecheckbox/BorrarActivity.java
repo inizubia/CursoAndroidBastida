@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,7 +20,6 @@ public class BorrarActivity extends Activity implements OnClickListener{
 	private ArrayList<Persona> listPersona = new ArrayList<Persona>();
 	private ArrayList<Lista_entrada> datos = new ArrayList<Lista_entrada>();
 	private ListView lista = null;
-	private CheckBox cb;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +29,8 @@ public class BorrarActivity extends Activity implements OnClickListener{
 		btnVolver = (Button)findViewById(R.id.volver3);
 		btnTodo = (Button)findViewById(R.id.todo);
 		btnNada = (Button)findViewById(R.id.nada);
-		btnAceptar = (Button)findViewById(R.id.aceptar3);
+		btnAceptar = (Button)findViewById(R.id.borrar3);
 		lista = (ListView)findViewById(R.id.listcheck);
-		
-		cb = (CheckBox)findViewById(R.id.checkbox);
 		
 		btnVolver.setOnClickListener(this);
 		btnTodo.setOnClickListener(this);
@@ -44,17 +41,11 @@ public class BorrarActivity extends Activity implements OnClickListener{
 		
 		listPersona = bbdd.recuperarAGENDA();
 		for(Persona l: listPersona)
-			datos.add(new Lista_entrada(R.drawable.ic_launcher,l.getNombre(),l.getApellido()));
+			datos.add(new Lista_entrada(R.drawable.ic_launcher,l.getNombre(),l.getApellido(),Integer.toString(l.getId())));
 		
 		adaptador();
 		
-
 	}
-	
-	/*private class ViewHolder {
-		TextView code;
-		CheckBox name;
-	}*/
 
 	@Override
 	public void onClick(View v) {
@@ -63,25 +54,51 @@ public class BorrarActivity extends Activity implements OnClickListener{
 			finish();
 		}
 		else if (v.getId()==btnTodo.getId()){
-			//ViewHolder holder = new ViewHolder();
-			/*LayoutInflater inflator = context.getLayoutInflater();
-		      view = inflator.inflate(R.layout.rowbuttonlayout, null);*/
-			/*LayoutInflater vi = (LayoutInflater)getSystemService(
-				     Context.LAYOUT_INFLATER_SERVICE);
-				   convertView = vi.inflate(R.layout.entrada, null);
-			
-			holder.code = (TextView) convertView.findViewById(R.id.code);
-			holder.name = (CheckBox) convertView.findViewById(R.id.checkBox1);
-			convertView.setTag(holder);*/
-			//holder.name = (CheckBox) findViewById(R.id.listcheck);
-			//holder.name.setSelected(true);
-			
+			int size = lista.getChildCount();
+
+			for (int i=0; i<size;i++)
+			{
+				LinearLayout layout = (LinearLayout) lista.getChildAt(i);
+				CheckBox check = (CheckBox) layout.getChildAt(0);
+				check.setChecked(true);
+			}		
 		}
 		else if (v.getId()==btnNada.getId()) {
+			int size = lista.getChildCount();
 			
+			for (int i=0; i<size;i++)
+			{
+				LinearLayout layout = (LinearLayout) lista.getChildAt(i);
+				CheckBox check = (CheckBox) layout.getChildAt(0);
+				check.setChecked(false);
+			}
 		}
 		else if (v.getId()==btnAceptar.getId()) {
-			
+			int size = lista.getChildCount();
+			for (int i=0; i<size;i++)
+			{
+				LinearLayout layout = (LinearLayout) lista.getChildAt(i);
+				CheckBox check = (CheckBox) layout.getChildAt(0);
+				if (check.isChecked())
+				{
+					LinearLayout layout2 = (LinearLayout) layout.getChildAt(2);
+					TextView tv = (TextView) layout2.getChildAt(2);
+					bbdd.borrarCONTACTO(Integer.parseInt(tv.getText().toString()));
+				}
+			}
+			listPersona = bbdd.recuperarAGENDA();
+			datos.clear();
+			for(Persona l: listPersona)
+				datos.add(new Lista_entrada(R.drawable.ic_launcher,l.getNombre(),l.getApellido(),Integer.toString(l.getId())));
+
+			((Lista_adaptador)lista.getAdapter()).notifyDataSetChanged();
+
+			for (int i=0; i<size;i++)
+			{
+				LinearLayout layout = (LinearLayout) lista.getChildAt(i);
+				CheckBox check = (CheckBox) layout.getChildAt(0);
+				check.setChecked(false);
+			}
 		}
 		
 	}
@@ -93,11 +110,6 @@ public class BorrarActivity extends Activity implements OnClickListener{
 			{
 				if (entrada!=null)
 				{
-					CheckBox box = (CheckBox)view.findViewById(R.id.checkbox);
-					if (box!=null)
-					{
-						box.setSelected((((Lista_entrada)entrada).isSelected()));
-					}
 					TextView name = (TextView)view.findViewById(R.id.tvFecha);
 					if (name!=null)
 					{
@@ -107,6 +119,11 @@ public class BorrarActivity extends Activity implements OnClickListener{
 					if (surname!=null)
 					{
 						surname.setText(((Lista_entrada)entrada).getSurname());
+					}
+					TextView id = (TextView)view.findViewById(R.id.tvId);
+					if (id!=null)
+					{
+						id.setText(((Lista_entrada)entrada).getId());
 					}
 					ImageView imagen = (ImageView)view.findViewById(R.id.imagen);
 					if (imagen!=null)

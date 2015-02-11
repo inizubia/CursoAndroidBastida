@@ -147,6 +147,7 @@ public class MainActivity extends Activity implements OnClickListener{
 			listPersona.clear();
 			listBoton.clear();
 			cargarBotones();
+			vaciarCampos();
 			break;
 		case 4:
 			if (result == RESULT_OK){

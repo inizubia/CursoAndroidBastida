@@ -28,10 +28,10 @@
 	        android:layout_height="wrap_content"
 	        android:text="@string/nada"/>
 	    <Button 
-	        android:id="@+id/aceptar3"
+	        android:id="@+id/borrar3"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/aceptar"/>
+	        android:text="@string/borrar"/>
 	</LinearLayout>
     
      <ListView 

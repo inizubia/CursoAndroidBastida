@@ -4,14 +4,14 @@ public class Lista_entrada {
 	private int idImagen;
 	private String name="";
 	private String surname="";
-	private boolean selected;
+	private String id;
 	
-	public Lista_entrada(int idImagen, String name, String surname)
+	public Lista_entrada(int idImagen, String name, String surname, String id)
 	{
 		this.idImagen=idImagen;
 		this.name=name;
 		this.surname=surname;
-		selected = false;
+		this.id=id;
 	}
 
 	public int getIdImagen() {
@@ -26,11 +26,7 @@ public class Lista_entrada {
 		return surname;
 	}
 	
-	public boolean isSelected() {
-	    return selected;
+	public String getId() {
+	    return id;
 	  }
-
-	public void setSelected(boolean selected) {
-	    this.selected = selected;
-	}
 }
