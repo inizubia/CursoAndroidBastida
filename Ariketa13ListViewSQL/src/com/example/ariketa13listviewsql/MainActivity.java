@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements OnClickListener{
 	private ArrayList<Integer> arrayAno = new ArrayList<Integer>();
 	private ArrayAdapter<Integer> adaptadorDia, adaptadorAno;
 	private ArrayAdapter<CharSequence> adaptadorMes;
-	private int i;
+	private int i, image;
 	private BBDD bbdd;
 	private ArrayList<Lista_entrada> datos = new ArrayList<Lista_entrada>();
 	private ArrayList<String[]> list = new ArrayList<String[]>();
@@ -89,18 +89,22 @@ public class MainActivity extends Activity implements OnClickListener{
 		bbdd.saveTarea(d, m, y, asunto);
 		
 		datos.clear();
-		list = bbdd.selectPlan();
-		for(String[] l: list)
-			datos.add(new Lista_entrada(R.drawable.ic_launcher,l[0],l[1]));
-
+		cargar();
+		
 		((Lista_adaptador)lista.getAdapter()).notifyDataSetChanged();
 		etAsunto.setText("");
 	}
 	
 	public void cargar(){
 		list = bbdd.selectPlan();
-		for(String[] l: list)
-			datos.add(new Lista_entrada(R.drawable.ic_launcher,l[0],l[1]));
+		for(String[] l: list){
+			String[] parte = l[0].split("-");
+			if(Integer.parseInt(parte[2]) > 2010)
+				image = R.drawable.imagenzar;
+			else 
+				image = R.drawable.imagenjoven;
+		datos.add(new Lista_entrada(image,l[0],l[1]));
+		}
 	}
 	
 	private void adaptador() {
