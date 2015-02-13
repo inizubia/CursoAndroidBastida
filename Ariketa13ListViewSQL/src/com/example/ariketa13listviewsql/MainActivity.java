@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener{
 
@@ -76,6 +77,7 @@ public class MainActivity extends Activity implements OnClickListener{
 				datos.remove(posicion);
 				((Lista_adaptador)lista.getAdapter()).notifyDataSetChanged();
 				bbdd.deleteTarea(posicion);
+				toast();
 			}
 		});
 	}
@@ -132,6 +134,12 @@ public class MainActivity extends Activity implements OnClickListener{
 				}
 			}
 		});
+		
+	}
+	
+	public void toast(){
+		CustomToast miToast = new CustomToast(this, Toast.LENGTH_LONG);
+		miToast.show("BORRATUAAA!!!");
 		
 	}
 }

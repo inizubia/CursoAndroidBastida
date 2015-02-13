@@ -86,7 +86,8 @@
             android:id="@+id/aceptar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/aceptar">
+            android:text="@string/aceptar"
+            android:layout_marginTop="20dp">
         </Button>
     </LinearLayout>
     
