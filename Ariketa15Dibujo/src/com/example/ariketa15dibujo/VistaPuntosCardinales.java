@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.View;
 
 public class VistaPuntosCardinales extends View{
@@ -25,7 +26,7 @@ public class VistaPuntosCardinales extends View{
 		Paint LineCruz = new Paint();
 		LineCruz.setColor(Color.WHITE);
 		canvas.drawLine(50, canvas.getHeight()/2, canvas.getWidth()-50, canvas.getHeight()/2, LineCruz);
-		canvas.drawLine(canvas.getWidth()/2, 50, canvas.getWidth()/2, canvas.getHeight()-200, LineCruz);
+		canvas.drawLine(canvas.getWidth()/2, canvas.getHeight()/2-400, canvas.getWidth()/2, canvas.getHeight()-200, LineCruz);
 		
 		Paint LineDiagonal = new Paint();
 		LineDiagonal.setColor(Color.GRAY);
@@ -36,7 +37,7 @@ public class VistaPuntosCardinales extends View{
 	
 		Paint circuloNorte = new Paint(Paint.ANTI_ALIAS_FLAG);
 		circuloNorte.setColor(Color.WHITE);
-		canvas.drawCircle(canvas.getWidth()/2, 50, canvas.getWidth()/20, circuloNorte);
+		canvas.drawCircle(canvas.getWidth()/2, canvas.getHeight()/2-400, canvas.getWidth()/20, circuloNorte);
 		
 		Paint circuloSur = new Paint(Paint.ANTI_ALIAS_FLAG);
 		circuloSur.setColor(Color.RED);
@@ -54,7 +55,7 @@ public class VistaPuntosCardinales extends View{
 		punto.setColor(Color.BLACK);
 		punto.setStyle(Paint.Style.STROKE);
 		punto.setStrokeWidth(10);
-		canvas.drawPoint(canvas.getWidth()/2, 50, punto);
+		canvas.drawPoint(canvas.getWidth()/2, canvas.getHeight()/2-400, punto);
 		canvas.drawPoint(canvas.getWidth()/2, canvas.getHeight()-200, punto);
 		canvas.drawPoint(50, canvas.getHeight()/2, punto);
 		canvas.drawPoint(canvas.getWidth()-50, canvas.getHeight()/2, punto);
@@ -66,12 +67,18 @@ public class VistaPuntosCardinales extends View{
 		canvas.drawPoint(canvas.getWidth()/2-pc, canvas.getHeight()/2+ps, punto);
 		canvas.drawPoint(canvas.getWidth()/2+pc, canvas.getHeight()/2+ps, punto);
 		
-		float pc2=(float)Math.sin(Math.PI/3)*R;
-		float ps2=(float)Math.cos(Math.PI/3)*R;
+		float pc2=(float)Math.sin(Math.PI/2.6)*R;
+		float ps2=(float)Math.cos(Math.PI/2.6)*R;
 		canvas.drawPoint(canvas.getWidth()/2-pc2, canvas.getHeight()/2-ps2, punto);
 		canvas.drawPoint(canvas.getWidth()/2+pc2, canvas.getHeight()/2-ps2, punto);
 		canvas.drawPoint(canvas.getWidth()/2-pc2, canvas.getHeight()/2+ps2, punto);
 		canvas.drawPoint(canvas.getWidth()/2+pc2, canvas.getHeight()/2+ps2, punto);
+		
+		Paint escribir = new Paint(Paint.ANTI_ALIAS_FLAG);
+		escribir.setColor(Color.MAGENTA);
+		Typeface fuente = Typeface.create(Typeface.MONOSPACE, Typeface.BOLD);
+		escribir.setTextSize(50);
+		escribir.setTypeface(fuente);
+		canvas.drawText("PUNTOS CARDINALES", 150, 100, escribir);
 	}
-
 }
