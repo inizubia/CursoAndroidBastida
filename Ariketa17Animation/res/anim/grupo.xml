@@ -2,23 +2,27 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
     android:shareInterpolator="true" >
     <alpha
-        android:fromAlpha="1.0"
-        android:toAlpha="1.0" />
+        android:fromAlpha="0.0"
+        android:toAlpha="2.0" 
+        android:duration="2000" />
     <scale
         android:fromXScale="1.0"
-        android:toXScale="1.0"
+        android:toXScale="100.0"
         android:fromYScale="1.0"
-        android:toYScale="1.0"
+        android:toYScale="10.0"
         android:pivotX="1.0"
-        android:pivotY="1.0" />
+        android:pivotY="156.0"
+        android:duration="2000" />
     <translate
         android:fromXDelta="1.0"
-        android:toXDelta="1.0"
+        android:toXDelta="120.0"
         android:fromYDelta="1.0"
-        android:toYDelta="1.0" />
+        android:toYDelta="230.0" 
+        android:duration="2000" />
     <rotate
         android:fromDegrees="1.0"
-        android:toDegrees="1.0"
+        android:toDegrees="50.0"
         android:pivotX="1.0"
-        android:pivotY="1.0" />
+        android:pivotY="300.0"
+        android:duration="2000" />
 </set>

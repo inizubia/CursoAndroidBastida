@@ -11,7 +11,7 @@ import android.widget.Button;
 public class MainActivity extends Activity implements OnClickListener{
 	
 	private Button btnTranslate, btnRotate, btnScale, btnAlpha, btnGrupo;
-	private Animation animation1, animation2, animation3, animation4, animation5;
+	private Animation animation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +33,27 @@ public class MainActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		animation1 = AnimationUtils.loadAnimation(this, R.anim.translate);
-		animation2 = AnimationUtils.loadAnimation(this, R.anim.rotate);
-		animation3 = AnimationUtils.loadAnimation(this, R.anim.scale);
-		animation4 = AnimationUtils.loadAnimation(this, R.anim.alpha);
-		animation5 = AnimationUtils.loadAnimation(this, R.anim.grupo);
 		
-		btnTranslate.startAnimation(animation1);
-		btnRotate.startAnimation(animation2);
-		btnScale.startAnimation(animation3);
-		btnAlpha.startAnimation(animation4);
-		btnGrupo.startAnimation(animation5);
-		
+		if (v.getId()==btnTranslate.getId()){
+			animation = AnimationUtils.loadAnimation(this, R.anim.translate);
+			btnTranslate.startAnimation(animation);
+		}
+		else if (v.getId()==btnRotate.getId()) {
+			animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+			btnRotate.startAnimation(animation);
+		}
+		else if (v.getId()==btnScale.getId()) {
+			animation = AnimationUtils.loadAnimation(this, R.anim.scale);
+			btnScale.startAnimation(animation);
+		}
+		else if (v.getId()==btnAlpha.getId()) {
+			animation = AnimationUtils.loadAnimation(this, R.anim.alpha);
+			btnAlpha.startAnimation(animation);
+		}
+		else if (v.getId()==btnGrupo.getId()) {
+			animation = AnimationUtils.loadAnimation(this, R.anim.grupo);
+			btnGrupo.startAnimation(animation);
+		}	
 	}
 	
 }
