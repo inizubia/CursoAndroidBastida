@@ -5,13 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 public class Brujula extends View{
-
-	protected static final String TAG = null;
 	
 	public Brujula(Context context){
 		super(context);
@@ -85,17 +81,9 @@ public class Brujula extends View{
 		escribir.setTypeface(fuente);
 		canvas.drawText("PUNTOS CARDINALES", 150, 100, escribir);
         
-		Button pauseButton = null;
-		pauseButton.draw(canvas);
-		pauseButton.setText("TestButton");
-        pauseButton.setClickable(true);
-        /*pauseButton.setOnClickListener(new OnClickListener() {
-        public void onClick(View v) {
-        Log.i(TAG, "Button Pressed!");
-        }
-        });*/
-        
-
+		MiBoton boton = new MiBoton(getContext());
+		super.onDraw(canvas);
+		
 	}
 
 }
